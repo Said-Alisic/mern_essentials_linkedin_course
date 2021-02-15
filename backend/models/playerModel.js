@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const Schema = mongooese.Schema;
+const Schema = mongoose.Schema;
 
 // Like this we pass a schema of an object to our database
 export const PlayerSchema = new Schema({
