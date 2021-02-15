@@ -1,0 +1,9 @@
+// configuration files for babel
+
+{
+    "presets": [
+        "env",
+        "stage-0" // includes all recent changes to the language depending on stage specified
+    ]
+}
+
