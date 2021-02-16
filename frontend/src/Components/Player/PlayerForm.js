@@ -3,23 +3,44 @@ import axios from 'axios';
 
 // ccc - create class component
 class PlayerForm extends React.Component {
+    
+    state = {
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: ""
+    };
+
+
     submitPlayer(event) {
         event.preventDefault(); // Prevent refreshing browser automatically
 
-        axios.post('http://localhost:4000/players', {
-            firstName: this.refs.firstName.value,
-            lastName: this.refs.lastName.value,
-            phone: this.refs.phone.value,
-            email: this.refs.email.value,
-        })
+        const updatedPlayer = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            phone: this.state.phone,
+            email: this.state.email,
+        }
+
+        axios.post('http://localhost:4000/players', updatedPlayer)
         .then((res) => {
             console.log(res);
+            console.log(res.data);
         })
         .catch((err) => {
             console.log(err);
         })
 
     }
+
+    handleChange = e => {
+        this.setState({ 
+            [e.target.name]: e.target.value,
+        });
+        console.log(e.target.value);
+    }
+
+
 
     render() { 
         return (
@@ -28,21 +49,21 @@ class PlayerForm extends React.Component {
                 <form className="col s12" onSubmit={this.submitPlayer.bind(this)}>
                     <div className="row">
                         <div className="input-field col s6">
-                            <input id="firstName" ref="firstName" type="text"/>
+                            <input id="firstName" value={this.state.firstName} name="firstName" onChange={this.handleChange} type="text"/>
                             <label htmlFor="firstName">First Name</label>
                         </div>
                         <div className="input-field col s6">
-                            <input id="lastName" ref="lastName" type="text"/>
+                            <input id="lastName" name="lastName" value={this.state.lastName} onChange={this.handleChange} type="text"/>
                             <label htmlFor="lastName">Last Name</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s6">
-                            <input id="phone" ref="phone" type="text"/>
+                            <input id="phone" name="phone" value={this.state.phone} onChange={this.handleChange} type="text"/>
                             <label htmlFor="phone">Phone</label>
                         </div>
                         <div className="input-field col s6">
-                            <input id="email" ref="email" type="email"/>
+                            <input id="email" name="email" value={this.state.email} onChange={this.handleChange} type="email"/>
                             <label htmlFor="email">Email</label>
                         </div>
                     </div>
