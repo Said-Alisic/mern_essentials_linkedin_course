@@ -1,16 +1,17 @@
 import express from 'express';
 import mongoose, { mongo } from 'mongoose';
 import bodyparser from 'body-parser';
+import cors from 'cors';
 import routes from './routes/soccerRoutes';
 
 
 const app = express();
-const PORT = 3000;
+const PORT = 4000; // For CORS (cross origin request)
 
 // Mongo connection
 // Mongoose is a library that simplifies connections to mongo
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/soccerDB', {
+mongoose.connect('mongodb://localhost/soccerDB', {
     useNewUrlParser: true, 
     useUnifiedTopology: true
 });
@@ -21,6 +22,9 @@ mongoose.connect('mongodb://localhost:27017/soccerDB', {
 // allows us to pass the request encoded properly
 app.use(bodyparser.urlencoded({ extended: true}));
 app.use(bodyparser.json());
+
+// CORS setup
+app.use(cors());
 
 routes(app);
 
