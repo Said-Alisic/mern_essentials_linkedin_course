@@ -15,6 +15,7 @@ class App extends React.Component {
     }
     // bind function to constructor
     this.updateCurrentPlayer = this.updateCurrentPlayer.bind(this);
+    this.deleteCurrentPlayer = this.deleteCurrentPlayer.bind(this);
   }
 
   componentDidMount() {
@@ -38,13 +39,23 @@ class App extends React.Component {
     })
   }
 
+  deleteCurrentPlayer(player_id) {
+    axios.delete("http://localhost:4000/player/" + player_id)
+  }
+
+  
+
+  /*// Delete player by using axios and a delete button
+
+   */
+
   render () {
     return (
       <div className="container-fluid">
         <div className="row">
         <nav>
           <div className="nav-wrapper purple darken-3">
-            <a href="/" className="brand-logo">Soccer Management</a>
+            <a href="/" className="brand-logo center">Iceskating Management</a>
           </div>
         </nav>
         </div>
@@ -52,7 +63,8 @@ class App extends React.Component {
           <div className="col s3"><PlayerList players={this.state.players}
             updateCurrentPlayer={this.updateCurrentPlayer}/>
             </div>
-          <div className="col s9"><PlayerSingle player={this.state.currentPlayer}/></div>
+          <div className="col s9"><PlayerSingle player={this.state.currentPlayer}  
+            deleteCurrentPlayer={this.deleteCurrentPlayer}/></div>
         </div>
         <div className="row">
           <div className="col s12"><PlayerForm/></div>

@@ -33,19 +33,27 @@ class PlayerForm extends React.Component {
 
     }
 
-    handleChange = e => {
+    handleChange = (e) => {
         this.setState({ 
             [e.target.name]: e.target.value,
         });
         console.log(e.target.value);
     }
 
+    handleInputChange = (e) => {
+        let checkValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        this.setState({ 
+            [e.target.name]: checkValue,
+        });
+        console.log(checkValue);
+      }
+
 
 
     render() { 
         return (
             <div className="row">
-                <h1 className="center">Add New Player</h1>
+                <h3 className="center">Add New Iceskater</h3>
                 <form className="col s12" onSubmit={this.submitPlayer.bind(this)}>
                     <div className="row">
                         <div className="input-field col s6">
@@ -65,6 +73,52 @@ class PlayerForm extends React.Component {
                         <div className="input-field col s6">
                             <input id="email" name="email" value={this.state.email} onChange={this.handleChange} type="email"/>
                             <label htmlFor="email">Email</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s6">
+                            <input id="strength" name="strength" value={this.state.strength} onChange={this.handleChange} type="number"/>
+                            <label htmlFor="strength">Strength</label>
+                        </div>
+                        <div className="input-field col s6">
+                            <input id="endurance" name="endurance" value={this.state.endurance} onChange={this.handleChange} type="number"/>
+                            <label htmlFor="endurance">Endurance</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                    <div className="input-field col s6">
+                            <input id="speed" name="speed" value={this.state.speed} onChange={this.handleChange} type="number"/>
+                            <label htmlFor="speed">Speed</label>
+                        </div>
+                        <div className="input-field col s6">
+                            <input id="tactical" name="tactical" value={this.state.tactical} onChange={this.handleChange} type="number"/>
+                            <label htmlFor="tactical">Tactical</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                    <div className="input-field col s6">
+                            <input id="ability" name="ability" value={this.state.ability} onChange={this.handleChange} type="number"/>
+                            <label htmlFor="ability">Ability</label>
+                        </div>
+                        <div className="input-field col s6">
+                            <input id="techniques" name="techniques" value={this.state.techniques} onChange={this.handleChange} type="number"/>
+                            <label htmlFor="techniques">Techniques</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s6">
+                            <input id="team" name="team" value={this.state.team} onChange={this.handleChange} type="text"/>
+                            <label htmlFor="team">Team</label>
+                        </div>
+                        <div className="input-field col s6">
+                        <label>
+                            Is coach?
+                            <input
+                            name="isCouch"
+                            type="checkbox"
+                            checked={this.state.isCouch}
+                            onChange={this.handleInputChange}/>
+                        </label>
                         </div>
                     </div>
                     <button className="btn waves-effect waves-light" type="submit"
