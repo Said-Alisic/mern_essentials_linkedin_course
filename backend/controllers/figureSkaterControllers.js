@@ -51,7 +51,7 @@ export const deleteFigureSkater = (req, res) => {
         if (err) {
             res.send(err);
         }
-        res.json({ message: 'Successfully removed figure skater from soccerDB'});
+        res.json({ message: 'Successfully removed figure skater from IceSkatingDB'});
     });
 };
 
