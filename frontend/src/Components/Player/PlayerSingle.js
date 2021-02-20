@@ -21,8 +21,8 @@ const PlayerSingle = (props) => {
             <h5>Ability: {props.player.ability} - Techniques: {props.player.techniques}</h5>
           </div>
           <div className="card-action">
-              <h5>Team: {props.player.team}</h5>
-              <h5>Couch: {props.player.isCouch}</h5>
+              <h5>Couch: {props.player.couch}</h5>
+              <h5>Category: {props.player.category}</h5>
               <div className="card-content right-align">
                 <button className="btn btn-large waves-effect waves-light red" 
                 onClick={props.deleteCurrentPlayer.bind(this, props.player._id)}>Remove Iceskater</button>

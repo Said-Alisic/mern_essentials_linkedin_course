@@ -20,6 +20,15 @@ class PlayerForm extends React.Component {
             lastName: this.state.lastName,
             phone: this.state.phone,
             email: this.state.email,
+            strength: this.state.strength,
+            endurance: this.state.endurance,
+            speed: this.state.speed,
+            tactical: this.state.tactical,
+            ability: this.state.ability,
+            techniques: this.state.techniques,
+            couch: this.state.couch,
+            category: this.state.category,
+
         }
 
         axios.post('http://localhost:4000/players', updatedPlayer)
@@ -39,16 +48,6 @@ class PlayerForm extends React.Component {
         });
         console.log(e.target.value);
     }
-
-    handleInputChange = (e) => {
-        let checkValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-        this.setState({ 
-            [e.target.name]: checkValue,
-        });
-        console.log(checkValue);
-      }
-
-
 
     render() { 
         return (
@@ -107,18 +106,12 @@ class PlayerForm extends React.Component {
                     </div>
                     <div className="row">
                         <div className="input-field col s6">
-                            <input id="team" name="team" value={this.state.team} onChange={this.handleChange} type="text"/>
-                            <label htmlFor="team">Team</label>
+                            <input id="couch" name="couch" value={this.state.couch} onChange={this.handleChange} type="text"/>
+                            <label htmlFor="couch">Team</label>
                         </div>
                         <div className="input-field col s6">
-                        <label>
-                            Is coach?
-                            <input
-                            name="isCouch"
-                            type="checkbox"
-                            checked={this.state.isCouch}
-                            onChange={this.handleInputChange}/>
-                        </label>
+                            <input id="category" name="category" value={this.state.category} onChange={this.handleChange} type="text"/>
+                            <label htmlFor="category">Category</label>
                         </div>
                     </div>
                     <button className="btn waves-effect waves-light" type="submit"
