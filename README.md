@@ -21,5 +21,5 @@
 
 ### Using the application
 
-1. Type `localhost:3000` to access the application running of the frontend application did not auto-open it
+1. Type `localhost:3000` in a browser of your choosing to access the application running of the frontend application did not auto-open it
 2. Experiment a little by adding new figure skaters at the bottom of the page! :)
