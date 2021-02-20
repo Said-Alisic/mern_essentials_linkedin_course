@@ -41,7 +41,7 @@ export const FigureSkaterSchema = new Schema({
         type: Number,
         enum: [1, 2, 3]
     },
-    techniques: {
+    technique: {
         type: Number,
         enum: [1, 2, 3]
     },

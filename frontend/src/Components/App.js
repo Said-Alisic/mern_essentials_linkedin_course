@@ -1,31 +1,32 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import PlayerList from './Player/PlayerList';
-import PlayerSingle from './Player/PlayerSingle';
-import PlayerForm from './Player/PlayerForm';
-// use alt form for quick editing
+import FigureSkaterList from './FigureSkater/FigureSkaterList';
+import FigureSkaterSingle from './FigureSkater/FigureSkaterSingle';
+import FigureSkaterForm from './FigureSkater/FigureSkaterForm';
+
+// use alt form for quick editing multiple fields in VCS
 
 class App extends React.Component {
   constructor(props) {
     super(props); // assigns props to constructor
     this.state = {
-      players: [],
-      currentPlayer: {},
+      figureSkaters: [],
+      currentFigureSkater: {},
     }
     // bind function to constructor
-    this.updateCurrentPlayer = this.updateCurrentPlayer.bind(this);
-    this.deleteCurrentPlayer = this.deleteCurrentPlayer.bind(this);
+    this.updateCurrentFigureSkater = this.updateCurrentFigureSkater.bind(this);
+    this.deleteCurrentFigureSkater = this.deleteCurrentFigureSkater.bind(this);
   }
 
   componentDidMount() {
-    const url = 'http://localhost:4000/players';
+    const url = 'http://localhost:4000/figureSkaters';
 
     // axios uses promises
     axios.get(url)
       .then((Response) => {
         this.setState({
-          players: Response.data
+          figureSkaters: Response.data
         })
       })
       .catch((error) => {
@@ -33,14 +34,14 @@ class App extends React.Component {
       });
   }
 
-  updateCurrentPlayer(item) {
+  updateCurrentFigureSkater(figureSkater) {
     this.setState({
-      currentPlayer: item,
+      currentFigureSkater: figureSkater,
     })
   }
 
-  deleteCurrentPlayer(player_id) {
-    axios.delete("http://localhost:4000/player/" + player_id)
+  deleteCurrentFigureSkater(id) {
+    axios.delete("http://localhost:4000/figureSkater/" + id)
   }
 
   
@@ -60,14 +61,14 @@ class App extends React.Component {
         </nav>
         </div>
         <div className="row">
-          <div className="col s3"><PlayerList players={this.state.players}
-            updateCurrentPlayer={this.updateCurrentPlayer}/>
+          <div className="col s3"><FigureSkaterList players={this.state.figureSkaters}
+            updateCurrentFigureSkater={this.updateCurrentFigureSkater}/>
             </div>
-          <div className="col s9"><PlayerSingle player={this.state.currentPlayer}  
-            deleteCurrentPlayer={this.deleteCurrentPlayer}/></div>
+          <div className="col s9"><FigureSkaterSingle player={this.state.currentFigureSkater}  
+            deleteCurrentFigureSkater={this.deleteCurrentFigureSkater}/></div>
         </div>
         <div className="row">
-          <div className="col s12"><PlayerForm/></div>
+          <div className="col s12"><FigureSkaterForm/></div>
         </div>   
       </div>
     );

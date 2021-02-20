@@ -2,20 +2,28 @@ import React from 'react';
 import axios from 'axios';
 
 // ccc - create class component
-class PlayerForm extends React.Component {
+class FigureSkaterForm extends React.Component {
     
     state = {
         firstName: "",
         lastName: "",
         phone: "",
-        email: ""
+        email: "",
+        strength: 0,
+        endurance: 0,
+        speed: 0,
+        tactical: 0,
+        ability: 0,
+        techniques: 0,
+        couch: "",
+        category: "",
     };
 
 
-    submitPlayer(event) {
+    handleSubmit(event) {
         event.preventDefault(); // Prevent refreshing browser automatically
 
-        const updatedPlayer = {
+        const updatedFigureSkater = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             phone: this.state.phone,
@@ -25,13 +33,13 @@ class PlayerForm extends React.Component {
             speed: this.state.speed,
             tactical: this.state.tactical,
             ability: this.state.ability,
-            techniques: this.state.techniques,
+            technique: this.state.technique,
             couch: this.state.couch,
             category: this.state.category,
 
         }
 
-        axios.post('http://localhost:4000/players', updatedPlayer)
+        axios.post('http://localhost:4000/players', updatedFigureSkater)
         .then((res) => {
             console.log(res);
             console.log(res.data);
@@ -53,7 +61,7 @@ class PlayerForm extends React.Component {
         return (
             <div className="row">
                 <h3 className="center">Add New Iceskater</h3>
-                <form className="col s12" onSubmit={this.submitPlayer.bind(this)}>
+                <form className="col s12" onSubmit={this.handleSubmit.bind(this)}>
                     <div className="row">
                         <div className="input-field col s6">
                             <input id="firstName" value={this.state.firstName} name="firstName" onChange={this.handleChange} type="text"/>
@@ -100,8 +108,8 @@ class PlayerForm extends React.Component {
                             <label htmlFor="ability">Ability</label>
                         </div>
                         <div className="input-field col s6">
-                            <input id="techniques" name="techniques" value={this.state.techniques} onChange={this.handleChange} type="number"/>
-                            <label htmlFor="techniques">Techniques</label>
+                            <input id="technique" name="technique" value={this.state.technique} onChange={this.handleChange} type="number"/>
+                            <label htmlFor="technique">Technique</label>
                         </div>
                     </div>
                     <div className="row">
@@ -122,4 +130,4 @@ class PlayerForm extends React.Component {
     }
 }
  
-export default PlayerForm;
+export default FigureSkaterForm;
