@@ -28,6 +28,7 @@ class App extends React.Component {
         this.setState({
           figureSkaters: Response.data
         })
+        
       })
       .catch((error) => {
         console.log(error);
@@ -61,10 +62,10 @@ class App extends React.Component {
         </nav>
         </div>
         <div className="row">
-          <div className="col s3"><FigureSkaterList players={this.state.figureSkaters}
+          <div className="col s3"><FigureSkaterList figureSkaters={this.state.figureSkaters}
             updateCurrentFigureSkater={this.updateCurrentFigureSkater}/>
             </div>
-          <div className="col s9"><FigureSkaterSingle player={this.state.currentFigureSkater}  
+          <div className="col s9"><FigureSkaterSingle figureSkater={this.state.currentFigureSkater}  
             deleteCurrentFigureSkater={this.deleteCurrentFigureSkater}/></div>
         </div>
         <div className="row">

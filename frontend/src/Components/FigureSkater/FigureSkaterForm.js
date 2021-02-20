@@ -14,7 +14,7 @@ class FigureSkaterForm extends React.Component {
         speed: 0,
         tactical: 0,
         ability: 0,
-        techniques: 0,
+        technique: 0,
         couch: "",
         category: "",
     };
@@ -39,7 +39,7 @@ class FigureSkaterForm extends React.Component {
 
         }
 
-        axios.post('http://localhost:4000/players', updatedFigureSkater)
+        axios.post('http://localhost:4000/figureSkaters', updatedFigureSkater)
         .then((res) => {
             console.log(res);
             console.log(res.data);
@@ -115,7 +115,7 @@ class FigureSkaterForm extends React.Component {
                     <div className="row">
                         <div className="input-field col s6">
                             <input id="couch" name="couch" value={this.state.couch} onChange={this.handleChange} type="text"/>
-                            <label htmlFor="couch">Team</label>
+                            <label htmlFor="couch">Couch</label>
                         </div>
                         <div className="input-field col s6">
                             <input id="category" name="category" value={this.state.category} onChange={this.handleChange} type="text"/>

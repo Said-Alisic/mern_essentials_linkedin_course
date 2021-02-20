@@ -5,7 +5,7 @@ const FigureSkater = mongoose.model('FigureSkater', FigureSkaterSchema);
 
 // Saves a figure skater with passed parameters to our mongodb database
 export const addNewFigureSkater = (req, res) => {
-    let newFigureSkater = new Skater(req.body);
+    let newFigureSkater = new FigureSkater(req.body);
 
     newFigureSkater.save((err, FigureSkater) => {
         if (err) {
@@ -47,7 +47,7 @@ export const updateFigureSkater = (req, res) => {
 
 // Gives a reponse containing a figure skater with an ID in the URL parameters
 export const deleteFigureSkater = (req, res) => {
-    FigureSkater.remove({ _id: req.params.FigureSkaterId }, (err, FigureSkater) => {
+    FigureSkater.deleteOne({ _id: req.params.FigureSkaterId }, (err, FigureSkater) => {
         if (err) {
             res.send(err);
         }
