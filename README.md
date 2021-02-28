@@ -16,7 +16,7 @@
 
 ### Starting the frontend application server
 
-1. Navigate to the backend folder and run `npm install` to install all dependencies for the backend server
+1. Navigate to the frontend folder and run `npm install` to install all dependencies for the frontend server
 2. Run `npm start` to start the frontend application - this will open a browser tab running the main page of the application
 
 ### Using the application
