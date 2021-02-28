@@ -1,5 +1,5 @@
 import express from 'express';
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
 import cors from 'cors';
 import routes from './routes/iceSkatingRoutes';
